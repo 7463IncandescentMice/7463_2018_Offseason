@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team7463.robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -28,6 +29,8 @@ public class Robot extends IterativeRobot {
 	private WPI_VictorSPX rightMotor;
 	private NidecBrushless Brushless;
 	private Joystick m_leftStick;
+//	private ControlMode leftMotorControlMode;
+//	private ControlMode rightMotorControlMode;
 //	private Joystick m_rightStick;
 //	private Joystick m_rightStickHorizontal;
 
@@ -42,15 +45,17 @@ public class Robot extends IterativeRobot {
 		Brushless = new NidecBrushless(2, 2);
 		
 		
-		setupVictors(leftMotor);
-		setupVictors(rightMotor);
+//		setupVictors(leftMotor);
+//		setupVictors(rightMotor);
 	}
 
 	@Override
 	public void teleopPeriodic() {
 //		m_myRobot.tankDrive(m_leftStick.getRawAxis(1), m_leftStick.getRawAxis(2));
-		leftMotor.set(.1);
-		rightMotor.set(0);
+//		leftMotor.set(m_leftStick.getRawAxis(1), 1);
+//		rightMotor.set(m_leftStick.getRawAxis(2));
+		leftMotor.set(m_leftStick.getRawAxis(1));
+		rightMotor.set(m_leftStick.getRawAxis(2));
 		Brushless.enable();
 		Brushless.set(m_leftStick.getRawAxis(3));
 	}
